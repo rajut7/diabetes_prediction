@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        p {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Diabetes Prediction</h1>
+    <p>Enter the patient's information to predict diabetes.</p>
+    
+    <!-- Form to input patient data -->
+    <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <!-- Input fields for patient data -->
+        <label for="pregnancies">Number of Pregnancies:</label>
+        <input type="number" id="pregnancies" name="Pregnancies" required>
+        
+        <label for="glucose">Glucose Level (mg/dL):</label>
+        <input type="number" id="glucose" name="Glucose" required>
+        
+        <label for="blood_pressure">Blood Pressure (mm Hg):</label>
+        <input type="number" id="blood_pressure" name="BloodPressure" required>
+        
+        <label for="skin_thickness">Skin Thickness (mm):</label>
+        <input type="number" id="skin_thickness" name="SkinThickness" required>
+        
+        <label for="insulin">Insulin Level (mu U/ml):</label>
+        <input type="number" id="insulin" name="Insulin" required>
+        
+        <label for="bmi">BMI (Body Mass Index):</label>
+        <input type="number" id="bmi" name="BMI" step="0.01" required>
+
+        <label for="DiabetesPedigreeFunction">DiabetesPedigreeFunction:</label>
+        <input type="number" id="DiabetesPedigreeFunction" name="DiabetesPedigreeFunction" step="0.01" required>
+        
+        <label for="age">Age (years):</label>
+        <input type="number" id="age" name="Age" required>
+        
+        <!-- Submit button to send data to prediction model -->
+        <input type="submit" value="Predict">
+    </form>
+    
+    <h2>THE prediction is {{results}}</h2>
+</body>
+</html>
